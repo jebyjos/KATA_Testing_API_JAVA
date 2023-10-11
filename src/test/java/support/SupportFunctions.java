@@ -1,10 +1,16 @@
 package support;
 
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+//import org.testng.annotations.Test;
+import io.restassured.response.ResponseBody;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.response.ResponseBody;
+//import com.jayway.restassured.RestAssured;
+//import com.jayway.restassured.http.ContentType;
+//import com.jayway.restassured.response.Response;
+//import com.jayway.restassured.response.ResponseBody;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -28,7 +34,17 @@ public class SupportFunctions {
 
         return response.getBody();
     }
-
+    public static ResponseBody post(String url, Object json) {
+        response = RestAssured.given()
+                .header("content-type", MyConfig.CONTENT_TYPE)
+                .body(json)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(url);
+        
+        
+        return response.getBody();
+    }
     public static ResponseBody put(String url, String json) {
         response = RestAssured.given()
                 .header("content-type", MyConfig.CONTENT_TYPE)
@@ -36,7 +52,6 @@ public class SupportFunctions {
                 .contentType(ContentType.JSON)
                 .when()
                 .put(url);
-
         return response.getBody();
     }
 
@@ -51,7 +66,7 @@ public class SupportFunctions {
     }
 
     public static ResponseBody get(String url){
-        response = RestAssured.given()
+    	  	 	response = RestAssured.given()
                 .when()
                 .get(url);
         return response.getBody();
@@ -68,6 +83,11 @@ public class SupportFunctions {
         return mapper.readValue(jsonArray.toString(), classObj);
     }
     public static String getResponseCode(){
+    	System.out.println(response.getHeader("Response" ));
         return response.getHeader("Response" );
+    }
+    
+    public static String getStatusCode(){
+            return String.valueOf(response.getStatusCode());
     }
 }

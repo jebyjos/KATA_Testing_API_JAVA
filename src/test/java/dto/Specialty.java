@@ -1,7 +1,7 @@
 package dto;
 
-public class Type {
-    private int id;
+public class Specialty {
+	private int id;
     private String name;
 
     public int getId() {
@@ -19,4 +19,5 @@ public class Type {
     public void setName(String name) {
         this.name = name;
     }
+
 }

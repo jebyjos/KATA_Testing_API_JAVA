@@ -1,13 +1,20 @@
 package dto;
 
-public class Owner {
+import java.util.List;
+
+import io.cucumber.core.internal.com.fasterxml.jackson.annotation.JsonCreator;
+import io.cucumber.core.internal.com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class Owner { //POJO Classes
     private int id;
     private String firstName;
     private String lastName;
     private String address;
     private String city;
     private String telephone;
-
+    private List<Pets> pets;
+    
     public int getId() {
         return id;
     }
@@ -55,4 +62,12 @@ public class Owner {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
+
+	public List<Pets> getPets() {
+		return pets;
+	}
+
+	public void setPets(List<Pets> pets) {
+		this.pets = pets;
+	}
 }

@@ -8,7 +8,7 @@ public class Pet {
     private int id;
     private String name;
     private String birthDate;
-    private Type type;
+    private PetType petType;
     private Owner owner;
     @JsonIgnore
     private ArrayList<Visit> visits;
@@ -37,12 +37,12 @@ public class Pet {
         this.birthDate = birthDate;
     }
 
-    public Type getType() {
-        return type;
+    public PetType getType() {
+        return petType;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setType(PetType petType) {
+        this.petType = petType;
     }
 
     public Owner getOwner() {
@@ -60,6 +60,7 @@ public class Pet {
     public void setVisits(ArrayList<Visit> visits) {
         this.visits = visits;
     }
+
 
 
 
